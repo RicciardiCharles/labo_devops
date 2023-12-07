@@ -1,15 +1,63 @@
 {
-    "title": "testTitre de la notification",
-    "description": "Mise à jour de la version 1.0.0 à la version 1.0.1 de ABC ...",
-    "environments": ["dev", "staging"],
-    "impact": ["service1", "auth"],
-    "contacts": [
-      "tets contact"
-    ],
-    "schedule": {
-      "start": "Mercredi 30 Novembre 8:00",
-      "end": "Mercredi 30 Novembre 12:00"
-    },
-    "recommendations": "Monitorer l’état des services, rollback si besoin ...",
-    "notify": ["SECURITY"]
-  }
+  "type": "message",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "contentUrl": null,
+      "content": {
+            "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "TextBlock",
+            "size": "medium",
+            "weight": "bolder",
+            "text": "{{ title }}",
+            "style": "heading"
+          },
+          {
+            "type": "TextBlock",
+            "text": "{{ description }}",
+            "wrap": true
+          },
+          {
+            "type": "FactSet",
+            "facts": [
+              {
+                "title": "Environnements:",
+                "value": "{{ envs|join(', ') }}"
+              },
+              {
+                "title": "Services impactés:",
+                "value": "{{ impact|join(', ') }}"
+              },
+              {
+                "title": "Recommendations:",
+                "value": "{{ recommendations }}"
+              }
+            ]
+          },
+          {
+            "type": "FactSet",
+            "facts": [
+              {
+                "title": "Début:",
+                "value": "{{ schedule.start }}"
+              },
+              {
+                "title": "Fin:",
+                "value": "{{ schedule.end }}"
+              }
+            ]
+          },
+          {
+            "type": "TextBlock",
+            "text": "**Contacts**: \n\n - {{ contacts|join(' \\n\\n - ') }}",
+            "wrap": true
+          }
+        ],
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "version": "1.5"
+      }
+    }
+  ]
+}
