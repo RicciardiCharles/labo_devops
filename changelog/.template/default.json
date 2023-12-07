@@ -1,11 +1,10 @@
 {
-    "title": "Titre de la notification",
+    "title": "testTitre de la notification",
     "description": "Mise à jour de la version 1.0.0 à la version 1.0.1 de ABC ...",
     "environments": ["dev", "staging"],
     "impact": ["service1", "auth"],
     "contacts": [
-      "Med Mouine (med@kheops.dev)",
-      "John Doe (john@kheops.dev)"
+      "tets contact"
     ],
     "schedule": {
       "start": "Mercredi 30 Novembre 8:00",
